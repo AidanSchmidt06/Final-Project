@@ -15,7 +15,6 @@ import PhotosUI
 struct AddView: View {
     
     let isDark : Bool
-//    let item: WorkoutModel
     
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var WorkoutViewModel: WorkoutViewModel
@@ -32,7 +31,6 @@ struct AddView: View {
     
     @State private var avatarImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
-//    @AppStorage("isDarkMode") private var isDark = true
     
     var body: some View {
         ScrollView{
@@ -54,7 +52,7 @@ struct AddView: View {
                 Text("Reps: \(repsAmount)")
                     .font(.title2)
                     .bold()
-                    .foregroundStyle(isDark ? . pink : .red)
+                    .foregroundStyle(isDark ? .pink : .red)
                 Stepper("Enter an amount: \(repsAmount)", value: $repsAmount, in: 0...100)
                     .labelsHidden()
                 Text("Weight (lbs): \(weightAmount)")
@@ -104,21 +102,6 @@ struct AddView: View {
                         }
                     }
                 }
-//                .toolbar{
-//                    ToolbarItem(placement:ToolbarItemPlacement
-//                        .navigationBarTrailing){
-//                            Button(action:{isDark.toggle()},label:{
-//                                isDark ? Label("Dark Mode",systemImage: "lightbulb.fill") :
-//                                Label("Dark Mode",systemImage:
-//                                        "lightbulb")
-//                            })
-//                            
-//                        }
-//                        
-//                }
-//                .enviroment(\.colorScheme, isDark ? .dark : .light)
-               
-                
                 .navigationTitle("Add A Workout")
                 
                 .alert(isPresented: $showAlert, content: getAlert)

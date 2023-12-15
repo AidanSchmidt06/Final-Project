@@ -19,17 +19,23 @@ struct WorkoutRowView: View {
                 HStack{
                     Image(systemName:  "checkmark.circle")
                         .foregroundColor(item.isCompleted ? .green : .red)
+                        .padding()
+                        
                     Text(item.exercise)
                         .foregroundStyle(isDark ? .white : .black)
-//                    WorkoutRowView(item: WorkoutModel, isDark: true)
-//                        .foregroundStyle(.white)
+                        .padding()
+
                     
-                    Text("\(item.reps)")
-                        .foregroundStyle(isDark ? . pink : .red)
+                   
                     Text("\(item.sets)")
                         .foregroundStyle(isDark ? .teal : .blue)
+                        .padding()
+                    Text("\(item.reps)")
+                        .foregroundStyle(isDark ? . pink : .red)
+                        .padding()
                     Text("\(item.weight)")
                         .foregroundStyle(isDark ? .mint : .green)
+                        .padding()
                     Spacer()
                 }
                 .font(.title2)
@@ -40,9 +46,6 @@ struct WorkoutRowView: View {
     
 }
     
-    //#Preview {
-    //    WorkoutRowView()
-    //}
     struct WorkoutRowView_Previews: PreviewProvider{
         static var item1 = WorkoutModel(exercise: "Squats", reps: 10, sets: 3, weight: 150, isCompleted: false)
         

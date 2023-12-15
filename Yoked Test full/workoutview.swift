@@ -11,7 +11,6 @@ import SwiftUI
 
 struct WorkoutView: View {
     @EnvironmentObject var WorkoutViewModel: WorkoutViewModel
-//        @AppStorage("isDarkMode") private var isDark = false
     
     
     
@@ -55,18 +54,14 @@ struct WorkoutView: View {
                                     })
             
                                 }
-//                    .enviroment(\.colorScheme, isDark ? .dark : .light)
                     }
-//                .enviroment(\.colorScheme, isDark ? .dark : .light)
         }
         .background(WorkoutViewModel.isDarkMode ? Color.black : Color.white)
     }
-    //        .preferredColorScheme(isDark ? .dark : .light)
-    //}
 }
-    struct WorkoutView_Previews: PreviewProvider {
-        static var previews: some View {
-            NavigationView {
+struct WorkoutView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationView {
                 WorkoutView()
             }
             .environmentObject(WorkoutViewModel())
@@ -78,5 +73,5 @@ struct WorkoutView: View {
         }
         
     }
-    
+
 
