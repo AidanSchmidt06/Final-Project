@@ -10,6 +10,7 @@ import Foundation
 
 
 class WorkoutViewModel: ObservableObject {
+    @Published var isDarkMode : Bool = false
 
     @Published var items: [WorkoutModel] = []
 

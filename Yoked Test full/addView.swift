@@ -14,6 +14,9 @@ import PhotosUI
 
 struct AddView: View {
     
+    let isDark : Bool
+//    let item: WorkoutModel
+    
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var WorkoutViewModel: WorkoutViewModel
     @State var textFieldText: String = ""
@@ -29,6 +32,7 @@ struct AddView: View {
     
     @State private var avatarImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
+//    @AppStorage("isDarkMode") private var isDark = true
     
     var body: some View {
         ScrollView{
@@ -44,19 +48,19 @@ struct AddView: View {
                 Text("Sets: \(setsAmount)")
                     .font(.title2)
                     .bold()
-                    .foregroundStyle(.red)
+                    .foregroundStyle(isDark ? .teal : .blue)
                 Stepper("Enter an amount: \(setsAmount)", value: $setsAmount, in: 0...10)
                     .labelsHidden()
                 Text("Reps: \(repsAmount)")
                     .font(.title2)
                     .bold()
-                    .foregroundStyle(.blue)
+                    .foregroundStyle(isDark ? . pink : .red)
                 Stepper("Enter an amount: \(repsAmount)", value: $repsAmount, in: 0...100)
                     .labelsHidden()
                 Text("Weight (lbs): \(weightAmount)")
                     .font(.title2)
                     .bold()
-                    .foregroundStyle(.green)
+                    .foregroundStyle(isDark ? .mint : .green)
                 Stepper("Enter an amount: \(weightAmount)", onIncrement: {weightAmount += 5}, onDecrement: {weightAmount -= 5})
                     .labelsHidden()
                 // Use a stepper to get integers. That could be cool!
@@ -100,7 +104,20 @@ struct AddView: View {
                         }
                     }
                 }
-                
+//                .toolbar{
+//                    ToolbarItem(placement:ToolbarItemPlacement
+//                        .navigationBarTrailing){
+//                            Button(action:{isDark.toggle()},label:{
+//                                isDark ? Label("Dark Mode",systemImage: "lightbulb.fill") :
+//                                Label("Dark Mode",systemImage:
+//                                        "lightbulb")
+//                            })
+//                            
+//                        }
+//                        
+//                }
+//                .enviroment(\.colorScheme, isDark ? .dark : .light)
+               
                 
                 .navigationTitle("Add A Workout")
                 
@@ -108,7 +125,8 @@ struct AddView: View {
                 
             }
             
-           
+            .background(isDark ? Color.black : Color.white)
+
         }
     }
     func saveButtonPressed() {
@@ -156,10 +174,10 @@ struct AddView: View {
                 
                 NavigationView{
                     
-                    AddView()
+                    AddView(isDark : true)
+                   
                     
                 }
-                
                 .environmentObject(WorkoutViewModel())
                 
             }
